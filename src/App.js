@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { Login, Test } from "./views";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Login, Account, Test } from "./views";
+import GlobalStyle from "./components/Global/styles";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 const App = () => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser({ name: "test123" });
+  }, []);
+
   return (
     <Router>
       <div>
-        {/* <Navbar /> */}
+        <GlobalStyle />
         <Switch>
-          <Route exact path="/login">
+          <Route exact path="/">
             <Login />
           </Route>
-          <Route exact path="/test">
+          <Route path="/account">
+            <Account user={user} />
+          </Route>
+          <Route path="/test">
             <Test />
           </Route>
+          <Redirect from="*" to="/" />
         </Switch>
       </div>
     </Router>
