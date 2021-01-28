@@ -70,12 +70,10 @@ export default createGlobalStyle`
     }
     select {
         appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         color: inherit;
         font-family: inherit;
-        background: red;
-        background-size: 14px 8px;
-        background-position: 94%;
-        background-color: #fff;
         outline: none;
         cursor: pointer;
     }
@@ -96,6 +94,7 @@ export default createGlobalStyle`
         }
      }
     button {
+        padding-bottom: 1px;
         font-family: inherit;
         font-size: inherit;
         border: none;
@@ -110,8 +109,10 @@ export default createGlobalStyle`
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-
         display: flex;
-        background:lightgreen;
+    }
+    .main {
+        width: 100%;
+        background:#f2f2f2;
     }
 `;

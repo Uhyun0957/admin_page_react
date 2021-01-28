@@ -1,12 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-const Login = () => {
+import LoginBox from "../components/LoginBox/LoginBox";
+
+const LoginView = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #f2f2f2;
+`;
+
+const Login = ({ history }) => {
   return (
-    <div>
-      <h2>LOGIN</h2>
-      <Link to="/account">go to account page</Link>
-    </div>
+    <LoginView>
+      <LoginBox history={history} />
+    </LoginView>
   );
 };
 

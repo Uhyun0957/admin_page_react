@@ -9,15 +9,17 @@ import icon_log from "../../assets/icon/log.png";
 import icon_account from "../../assets/icon/account.png";
 
 const NavbarView = styled.div`
-  width: 260px;
-  min-height: 90vh;
-  min-width: 150px;
+  min-width: 260px;
+  min-height: 95vh;
   background: #2d3135;
   a {
     display: flex;
     height: 60px;
     transition: background 0.1s ease-in-out;
     &:hover {
+      background: #383e42;
+    }
+    &.current {
       background: #383e42;
     }
   }
@@ -39,22 +41,22 @@ const Title = styled.h2`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ current_page }) => {
   return (
     <NavbarView>
-      <Link to="/dashboard">
+      <Link to="/dashboard" className={current_page === "dashboard" ? "current" : ""}>
         <Title icon={icon_dashboard}>대시보드</Title>
       </Link>
-      <Link to="/statistical_data">
+      <Link to="/statistics" className={current_page === "statistics" ? "current" : ""}>
         <Title icon={icon_chart}>통계</Title>
       </Link>
-      <Link to="/node">
+      <Link to="/node" className={current_page === "node" ? "current" : ""}>
         <Title icon={icon_node}>노드</Title>
       </Link>
-      <Link to="/log">
+      <Link to="/log" className={current_page === "log" ? "current" : ""}>
         <Title icon={icon_log}>로그</Title>
       </Link>
-      <Link to="/account">
+      <Link to="/user" className={current_page === "user" ? "current" : ""}>
         <Title icon={icon_account}>계정</Title>
       </Link>
     </NavbarView>

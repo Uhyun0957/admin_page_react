@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -31,11 +31,13 @@ const TopbarView = styled.div`
   }
 `;
 
-const Topbar = ({ user }) => {
+const Topbar = () => {
+  const [user, setUser] = useState("test123");
+
   return (
     <TopbarView>
       <h1>
-        <Link to="/">AI.API 운용관리 시스템</Link>
+        <Link to="/">관리자 시스템</Link>
       </h1>
       <span>
         <strong>{user}</strong>
