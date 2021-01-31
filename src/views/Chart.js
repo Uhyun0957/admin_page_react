@@ -1,7 +1,24 @@
 import React, { useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import styled from "styled-components";
 
-// https://risha-lee.tistory.com/19 참고
+// https://risha-lee.tistory.com/19 참고'
+
+const Container = styled.div`
+  background: lightgreen;
+  #legend {
+    margin: 20px;
+    /* flex-direction: row; */
+    background: lightcoral;
+    ul {
+      display: flex;
+    }
+    li {
+      padding: 20px;
+      color: white;
+    }
+  }
+`;
 
 let instance = null;
 
@@ -15,7 +32,13 @@ const Chart = () => {
     const legend = instance.chartInstance.generateLegend();
     document.getElementById("legend").innerHTML = legend;
     document.querySelectorAll("#legend li").forEach((item, index) => {
+      let ins = instance.chartInstance.getDatasetMeta(index);
+      let bg = instance.props.data.datasets[index].borderColor;
+      if (index !== 0) ins.hidden = true;
       item.addEventListener("click", (e) => handling(e, index));
+      item.style.backgroundColor = ins.hidden ? bg : "white";
+      item.style.color = ins.hidden ? "white" : bg;
+      item.style.border = `1px solid ${bg}`;
     });
   };
 
@@ -23,6 +46,14 @@ const Chart = () => {
     let ctx = instance.chartInstance;
     let meta = ctx.getDatasetMeta(index);
     meta.hidden = !meta.hidden;
+
+    let target = e.target;
+    let bg = target.style.backgroundColor;
+    let fc = target.style.color;
+    console.log("bg", bg, "fc", fc);
+    target.style.color = fc === "white" ? bg : "white";
+    target.style.backgroundColor = bg === "white" ? fc : "white";
+
     // meta.update();
     // let item = meta.data;
     // console.log(item);
@@ -57,7 +88,8 @@ const Chart = () => {
       {
         type: "line",
         label: "빨강",
-        backgroundColor: "#F7464A",
+        borderColor: "#F7464A",
+        fill: false,
         data: [
           Math.random() * 90000,
           Math.random() * 90000,
@@ -71,19 +103,9 @@ const Chart = () => {
     ],
   };
   return (
-    <div style={{ width: "800px", height: "1000px" }}>
+    <Container style={{ width: "800px", height: "1000px" }}>
       차트
-      <div className="button_area" id="legend">
-        <button
-          style={{ background: "#854269", color: "white" }}
-          onClick={() => {
-            // handling();
-          }}
-        >
-          라인범례
-        </button>
-        <button style={{ background: "#e5d2a6", color: "white" }}>막대범례</button>
-      </div>
+      <div className="button_area" id="legend"></div>
       <Line
         ref={(input) => {
           instance = input;
@@ -91,7 +113,7 @@ const Chart = () => {
         options={{ responsive: true, legend: false }}
         data={data}
       />
-    </div>
+    </Container>
   );
 };
 
