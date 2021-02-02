@@ -10,12 +10,14 @@ export default styled.div`
   border: 0.8px solid #d1d1d1;
   background: #fff;
   h1 {
-    margin-bottom: 15px;
-    width: 236px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 800;
   }
   h2 {
-    margin-bottom: 60px;
-    width: 98px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    font-weight: 700;
   }
   .input_box {
     padding-bottom: 5px;
