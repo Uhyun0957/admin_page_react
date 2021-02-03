@@ -21,7 +21,7 @@ const LoginBox = ({ history }) => {
         <span>PW</span>
         <input type="password" onChange={({ target: { value } }) => setPw(value)} />
       </div>
-      <button onClick={() => controller.login({ id, pw, history })}>Log In</button>
+      <button onClick={() => controller.login({ id, pw, history })}>로그인</button>
     </LoginBoxStyles>
   );
 };

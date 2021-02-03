@@ -11,7 +11,7 @@ class LoginController extends React.Component {
       return;
     }
     // 로그인 로직
-    history.push("/");
+    history.push("/dashboard");
   };
 }
 
