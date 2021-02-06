@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Login, Dashboard } from "./views";
+import { Login, Mainboard } from "./views";
 import GlobalStyle from "./components/Global/styles";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const App = () => {
         <GlobalStyle />
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/mainboard" component={Mainboard} />
           <Redirect from="*" to="/" />
         </Switch>
       </div>
